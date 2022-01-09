@@ -184,3 +184,152 @@ function reversedString(str) {
   });
 }
 console.log(reversedString(testingStr));
+
+/* ------------------------------------------------------------------------------------------------
+CHALLENGE 7 - Stretch Goal
+Write a function named countNumberOfChildren that, given the array of characters, below, uses reduce to return the total number of children in the data set.
+------------------------------------------------------------------------------------------------ */
+const characters = [
+  {
+    name: "Eddard",
+    spouse: "Catelyn",
+    children: ["Robb", "Sansa", "Arya", "Bran", "Rickon"],
+    house: "Stark",
+  },
+  {
+    name: "Jon",
+    spouse: "Lysa",
+    children: ["Robin"],
+    house: "Arryn",
+  },
+  {
+    name: "Cersei",
+    spouse: "Robert",
+    children: ["Joffrey", "Myrcella", "Tommen"],
+    house: "Lannister",
+  },
+  {
+    name: "Daenarys",
+    spouse: "Khal Drogo",
+    children: ["Drogon", "Rhaegal", "Viserion"],
+    house: "Targaryen",
+  },
+  {
+    name: "Mace",
+    spouse: "Alerie",
+    children: ["Margaery", "Loras"],
+    house: "Tyrell",
+  },
+  {
+    name: "Sansa",
+    spouse: "Tyrion",
+    house: "Stark",
+  },
+  {
+    name: "Jon",
+    spouse: null,
+    house: "Snow",
+  },
+];
+
+function countNumberOfChildren(arr) {
+  let myAr = [];
+  arr.reduce((acc, cur) => {
+    if (cur.children) {
+      acc = cur.children.length;
+      myAr.push(acc);
+    }
+  }, 0);
+  return myAr.reduce((acc2, cur2) => {
+    return acc2 + cur2;
+  });
+}
+
+console.log(countNumberOfChildren(characters));
+
+/* ------------------------------------------------------------------------------------------------
+CHALLENGE 8 - Stretch Goal
+Write a function that, given an array of numbers as input, uses reduce to calculate the array's average value.
+Hint: The accumulator should begin as { count: 0, sum: 0 }
+------------------------------------------------------------------------------------------------ */
+const calculateAverage = (arr) => {
+  // Solution code here...
+  let avg = 0;
+  arr.reduce((acc, cur) => {
+    avg = acc + cur;
+    console.log(avg);
+    return avg;
+  }, 0);
+  return avg / arr.length;
+};
+console.log(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85]));
+/* ------------------------------------------------------------------------------------------------
+CHALLENGE 9 - Stretch Goal
+Write a function named countPrimeNumbers that, given an array elements as input, uses reduce to count the number of elements that are prime numbers.
+You are welcome to use the provided isPrime function.
+------------------------------------------------------------------------------------------------ */
+//prime numbers are numbers that have only 2 factors: 1 and themselves.
+const isPrime = (value) => {
+  for (let i = 2; i < value; i++) {
+    if (value % i === 0) {
+      return false;
+    }
+  }
+  return value > 1;
+};
+
+const countPrimeNumbers = (arr) => {
+  // Solution code here...
+  return arr.reduce((acc, cur) => {
+    if (isPrime(cur)) {
+      acc++;
+    }
+    return acc;
+  }, 0);
+};
+
+console.log(countPrimeNumbers([1, 2, 13, 64, 45, 56, 17, 8])); //3
+
+/* ------------------------------------------------------------------------------------------------
+CHALLENGE 10 - Stretch Goal
+Write a function named extractState that, given the snorlaxData, below, uses reduce to return the object whose 'name' property matches the given string.
+If the input array does not have a stat with that specific name, the function should return null.
+------------------------------------------------------------------------------------------------ */
+
+const snorlaxData = {
+  stats: [
+    {
+      stat: {
+        url: "https://pokeapi.co/api/v2/stat/6/",
+        name: "speed",
+      },
+      effort: 5,
+      baseStat: 30,
+    },
+    {
+      stat: {
+        url: "https://pokeapi.co/api/v2/stat/5/",
+        name: "special-defense",
+      },
+      effort: 2,
+      baseStat: 110,
+    },
+    {
+      stat: {
+        url: "https://pokeapi.co/api/v2/stat/4/",
+        name: "special-attack",
+      },
+      effort: 9,
+      baseStat: 65,
+    },
+  ],
+  name: "snorlax",
+  weight: 4600,
+};
+
+const extractStat = (statName, arr) => {
+  // Solution code here...
+  return arr.reduce((acc, cur) => {});
+};
+
+console.log(extractStat("special-defense", snorlaxData.stats));
